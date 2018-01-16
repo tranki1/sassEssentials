@@ -16,22 +16,29 @@ $color-btn-cool: $blue;
   user-select: none;
   color: $color-btn-text;
 }
+// $color-btn-names: "default", "hot", "cool";
+// $color-btn-values: $color-main, $red, $blue;
+// @each $name in $color-btn-names {
+//   $i: index($color-btn-names, $name);
 
-.btn-default {
-  @extend %btn;
-  background-color: $color-btn-default;
+//   .btn-#{$name} {
+//     @extend %btn;
+//     background-color: nth($color-btn-values, $i);
+//   }
+// }
+
+$color-btns: (
+  default: $color-main,
+  hot: $red,
+  cool: $blue
+);
+
+@each $key, $value in $color-btns {
+  .btn-#{$key} {
+    @extend %btn;
+    background-color: $value;
+  }
 }
-
-.btn-hot {
-  @extend %btn;
-  background-color: $color-btn-hot;
-}
-
-.btn-cool {
-  @extend %btn;
-  background-color: $color-btn-cool;
-}
-
 .grid {
   @include clearfix;
   .item {
